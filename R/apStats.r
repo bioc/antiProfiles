@@ -53,7 +53,7 @@ apStats <- function(e, cl, tiss=NULL, minL=10, cutoff=5, OnCutoff=2.54)
 
     message("Computing ranges")
     tMeds=sapply(tIndexes0[L0>=minL], function(ind) matrixStats::rowMedians(e[,ind]))
-    tMads=sapply(seq_along(tIndexes0[L0>=minL]), function(i) matrixStats::rowMads(e[,tIndexes0[L0>=minL][[i]]], centers=tMeds[,i]))
+    tMads=sapply(seq_along(tIndexes0[L0>=minL]), function(i) matrixStats::rowMads(e[,tIndexes0[L0>=minL][[i]]], center=tMeds[,i]))
     colnames(tMads)=colnames(tMeds)
 
     meds0=matrixStats::rowMedians(tMeds)
